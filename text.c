@@ -5,7 +5,7 @@
 #define WORD 30
 #define FALSE 0
 #define TRUE 1
-//Get words one by one from a line.
+// Get words one by one from a line.
 int Mygetword(char w[])
 { // same logic of Mygetline()
     char *p_word = w;
@@ -24,56 +24,65 @@ int Mygetword(char w[])
 // Simillarity check. (n -> max of n diff (less) chars).
 int similar(char *s, char *t, int n)
 {
-    if (strcmp(s,t)==0){
-       return TRUE; 
+    if (strcmp(s, t) == 0)
+    {
+        return TRUE;
     }
-    if (strlen(s) != strlen(t) + 1) {
-    return FALSE;
-  }
-  char *p_s = s;
-  char *p_t = t;
-  int counter = 0;
-  int j = 0;
-  for (int i = 0; i < strlen(s); i++) {
-    if (*(p_s+i) != *(p_t+j)) {
-      i++;
-      if (++counter > n) {
-        return FALSE;  
-      }
+    if (strlen(s) != strlen(t) + 1)
+    {
+        return FALSE;
     }
-    j++;
-  }
-  return TRUE;
+    char *p_s = s;
+    char *p_t = t;
+    int counter = 0;
+    int j = 0;
+    for (int i = 0; i < strlen(s); i++)
+    {
+        if (*(p_s + i) != *(p_t + j))
+        {
+            i++;
+            if (++counter > n)
+            {
+                return FALSE;
+            }
+        }
+        j++;
+    }
+    return TRUE;
 }
-//Prints the lines including *word*.
+// Prints the lines including *word*.
 void print_lines(char *str)
 {
     char Buffer[LINE];
     while (!feof(stdin)) // If it's not the EOF keep reading STREAM from terminal.
     {
-        if(fgets(Buffer, LINE, stdin) != NULL){
-            if (strstr(Buffer,str) > 0){
-            printf("%s",Buffer);
+        if (fgets(Buffer, LINE, stdin) != NULL)
+        {
+            if (strstr(Buffer, str) > 0)
+            {
+                printf("%s", Buffer);
             }
         }
     }
 }
-//Prints smilar(words).
-void print_similar_words(char * str){
+// Prints smilar(words).
+void print_similar_words(char *str)
+{
     while (!feof(stdin)) // If it's not the EOF keep reading promt from user.
     {
-                char newWord[WORD];
-                Mygetword(newWord);
-                if(similar(newWord,str,1) == 1){
-                    printf("%s\n",newWord);
-                }
+        char newWord[WORD];
+        Mygetword(newWord);
+        if (similar(newWord, str, 1) == 1)
+        {
+            printf("%s\n", newWord);
+        }
     }
 }
 
-//Main func.
+// Main func.
 int main()
 {
-   // ============ Gets the mission and the word. ======
+    // ============ Gets the mission and the word. ======
     char Word[WORD];
     Mygetword(Word);
     char Mission = getchar();
