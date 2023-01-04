@@ -5,7 +5,7 @@
 #define WORD 30
 #define FALSE 0
 #define TRUE 1
-
+//Get words one by one from a line.
 int Mygetword(char w[])
 { // same logic of Mygetline()
     char *p_word = w;
@@ -21,7 +21,7 @@ int Mygetword(char w[])
     *--p_word = '\0';
     return counter;
 }
-
+// Simillarity check. (n -> max of n diff (less) chars).
 int similar(char *s, char *t, int n)
 {
     if (strcmp(s,t)==0){
@@ -45,11 +45,11 @@ int similar(char *s, char *t, int n)
   }
   return TRUE;
 }
-
+//Prints the lines including *word*.
 void print_lines(char *str)
 {
     char Buffer[LINE];
-    while (!feof(stdin)) // If it's not the EOF keep reading promt from user.
+    while (!feof(stdin)) // If it's not the EOF keep reading STREAM from terminal.
     {
         if(fgets(Buffer, LINE, stdin) != NULL){
             if (strstr(Buffer,str) > 0){
@@ -58,7 +58,7 @@ void print_lines(char *str)
         }
     }
 }
-
+//Prints smilar(words).
 void print_similar_words(char * str){
     while (!feof(stdin)) // If it's not the EOF keep reading promt from user.
     {
@@ -69,12 +69,15 @@ void print_similar_words(char * str){
                 }
     }
 }
+
+//Main func.
 int main()
 {
    // ============ Gets the mission and the word. ======
     char Word[WORD];
     Mygetword(Word);
     char Mission = getchar();
+    //===================================================
     switch (Mission)
     {
     case 'a':
