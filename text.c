@@ -65,7 +65,7 @@ void print_similar_words(char * str){
                 char newWord[WORD];
                 Mygetword(newWord);
                 if(similar(newWord,str,1) == 1){
-                    printf("%s\n",newWord);
+                    printf("%s",newWord);
                 }
     }
 }
